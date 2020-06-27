@@ -20,7 +20,7 @@ def login():
         password = form.password.data
         
         user= User.objects(email=email).first()
-        if user and user.get_password(password):
+        if user and password == user.password:
             flash(f"{user.first_name}, You are successfully logged in!", "success")
             return redirect("/index")
         else:
